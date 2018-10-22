@@ -1,0 +1,34 @@
+.main-container h2,button,p{
+	font-weight: 100;
+	letter-spacing: 1.5px;
+}
+
+.p-t-30 {
+	padding-top: 30px;
+}
+
+.text-center {
+	text-align: center;
+}
+
+button {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+button.fb {
+	background-color: #3b5998;
+}
+
+button.twitter {
+	background-color: #55acee;
+}
+
+button.github {
+	background-color: #333333;
+}
+
+input {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}

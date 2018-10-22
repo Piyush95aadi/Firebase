@@ -1,0 +1,27 @@
+<div nz-row nzType="flex" nzJustify="center">
+  <div nz-col nzSpan="8" class="main-container p-t-30">
+  	<h2 class="text-center">FIREBASE AUTHENTICATION</h2>
+  	<hr>
+  	<!-- <button nz-button nzType="primary" nzBlock>Register with Email</button> -->
+  	<nz-card nzTitle="Register with Email" *ngIf="showRegisterWithEmail">
+      <input type="email" nz-input placeholder="Email" nzSize="default" [(ngModel)]="newUser.email">
+      <input type="password" nz-input placeholder="Password" nzSize="default" [(ngModel)]="newUser.password">
+      <button nz-button nzType="primary" nzBlock (click)="register()">Register</button>
+    </nz-card>
+    <button nz-button nzType="primary" nzBlock (click)="showRegisterWithEmail = !showRegisterWithEmail">Register with Email</button>
+  	<hr>
+  	<nz-card nzTitle="Sign in with Email" *ngIf="showSignInWithEmail">
+      <input type="email" nz-input placeholder="Email" nzSize="default" [(ngModel)]="newUser.email">
+      <input type="password" nz-input placeholder="Password" nzSize="default" [(ngModel)]="newUser.password">
+      <button nz-button nzType="default" nzBlock (click)="signInWithEmail()">Sign in</button>
+    </nz-card>
+    <button class="" nz-button nzType="default" nzBlock (click)="showSignInWithEmail = !showSignInWithEmail">Sign in with Email</button>
+    <hr>
+  	<button class="" nz-button nzType="default" nzBlock>Sign in with Google</button>
+  	<button class="fb" nz-button nzType="primary" nzBlock>Sign in with Facebook</button>
+  	<button class="twitter" nz-button nzType="primary" nzBlock>Sign in with Twitter</button>
+  	<button class="github" nz-button nzType="primary" nzBlock>Sign in with Github</button>
+  	<button class="phone" nz-button nzType="default" nzBlock>Sign in with Phone</button>
+  	<hr>
+  </div>
+</div>
