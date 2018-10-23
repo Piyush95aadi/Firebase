@@ -11,7 +11,12 @@ import { AuthenticationService } from '../../services/authentication/authenticat
 })
 export class AuthenticationComponent implements OnInit {
 	// showRegisterWithEmail: boolean = false;
-	newUser: { email: string, password: string} = {
+	newUser: { email: string, password: string } = {
+		email: '',
+		password: ''
+	}
+
+	user: { email: string, password: string } = {
 		email: '',
 		password: ''
 	}
@@ -35,7 +40,23 @@ export class AuthenticationComponent implements OnInit {
   	}
 
   	signInWithEmail() {
+  		this.authService.signInWithEmail(this.user.email, this.user.password)
+  			.then((response) => {
+  				console.log("Response: ", response);
+  				this.showNotification('Hi ' + response['user']['email'], 'You are logged in successfully.', 'success');
+  			}, (error) => {
+  				this.showNotification('Error while Signing In', error.message, 'error');
+  			})
+  	}
 
+  	signInWithProvider(provider: 'GOOGLE' | 'FB' | 'TWITTER' | 'GITHUB') {
+  		this.authService.signInWithProvider(provider, 'popup')
+  			.then((response) => {
+  				console.log("Response: ", response);
+  				this.showNotification('Hi ' + response['email'], 'You are logged in successfully.', 'success');
+  			}, (error) => {
+  				this.showNotification('Error while Signing In', error.message, 'error');
+  			});
   	}
 
   	showNotification(title: string, content: string, type: 'success' | 'error' | 'warning' | 'info') {
