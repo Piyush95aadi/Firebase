@@ -4,6 +4,8 @@ import { NzNotificationService } from 'ng-zorro-antd';
 
 import { AuthenticationService } from '../../services/authentication/authentication.service';
 
+import { auth } from 'firebase/app';
+
 @Component({
   selector: 'app-authentication',
   templateUrl: './authentication.component.html',
@@ -32,7 +34,7 @@ export class AuthenticationComponent implements OnInit {
   		this.authService.signupWithEmail(this.newUser.email, this.newUser.password)
   			.then((response) => {
   				console.log("Signup Response: ", response);
-  				this.showNotification('Account Created', 'Account created successfully.', 'success');
+  				this.showN otification('Account Created', 'Account created successfully.', 'success');
   			}, (error) => {
   				console.log("Error Response: ", error);
   				this.showNotification('Account not created', error.message, 'error');
