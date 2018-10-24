@@ -13,6 +13,8 @@ import { auth } from 'firebase/app';
 })
 export class AuthenticationComponent implements OnInit {
 	// showRegisterWithEmail: boolean = false;
+	showRegisterWithEmail: boolean = false;
+	showSignInWithEmail: boolean = false;
 	newUser: { email: string, password: string } = {
 		email: '',
 		password: ''
@@ -34,7 +36,8 @@ export class AuthenticationComponent implements OnInit {
   		this.authService.signupWithEmail(this.newUser.email, this.newUser.password)
   			.then((response) => {
   				console.log("Signup Response: ", response);
-  				this.showN otification('Account Created', 'Account created successfully.', 'success');
+  				this.newUser = {email: '', password: ''};
+  				this.showNotification('Account Created', 'Account created successfully.', 'success');
   			}, (error) => {
   				console.log("Error Response: ", error);
   				this.showNotification('Account not created', error.message, 'error');
@@ -45,6 +48,7 @@ export class AuthenticationComponent implements OnInit {
   		this.authService.signInWithEmail(this.user.email, this.user.password)
   			.then((response) => {
   				console.log("Response: ", response);
+  				this.user = {email: '', password: ''};
   				this.showNotification('Hi ' + response['user']['email'], 'You are logged in successfully.', 'success');
   			}, (error) => {
   				this.showNotification('Error while Signing In', error.message, 'error');

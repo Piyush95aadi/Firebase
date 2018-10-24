@@ -14,6 +14,8 @@ import { AppComponent } from './app.component';
 
 import { AuthenticationService } from './services/authentication/authentication.service';
 import { AuthenticationComponent } from './components/authentication/authentication.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 const fireConfig = {
 	apiKey: "AIzaSyAWQ1ICmiYOSLomYXhD4cpyzAHYVpPEq6Y",
@@ -36,7 +38,8 @@ registerLocaleData(en);
     FormsModule,
     AngularFireModule.initializeApp(fireConfig),
     AngularFireAuthModule,
-    NgZorroAntdModule
+    NgZorroAntdModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }, AuthenticationService],
   bootstrap: [AppComponent]
