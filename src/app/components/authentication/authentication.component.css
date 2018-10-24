@@ -1,3 +1,8 @@
+.main-container {
+	margin: 0 auto;
+	width: 33%;
+}
+
 .main-container h2,button,p{
 	font-weight: 100;
 	letter-spacing: 1.5px;
@@ -31,4 +36,11 @@ button.github {
 input {
 	margin-top: 5px;
 	margin-bottom: 5px;
+}
+
+@media (max-width: 500px) {
+	.main-container{
+		padding: 10px 10px;
+		width: 100%;
+	}
 }
